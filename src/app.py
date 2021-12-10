@@ -50,7 +50,7 @@ def get_member_by_id():
 def add_member():
     name= request.json.get("name", None),
     age= request.json.get("age", None)
-    lucky_numbers= request.jason.get("lucky_numbers", None)
+    lucky_numbers= request.json.get("lucky_numbers", None)
     id=request.json.get("id",None)
 
     if id is None:

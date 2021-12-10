@@ -13,9 +13,11 @@ class FamilyStructure:
         self.last_name = last_name
 
         # example list of members
-        self._members = [{"id":1, "Name": Jane, "Age":35, "Lucky Numbers": 10, 14, 3},
-            {"id":2, "Name": John, "Age": 33, "Lucky Numbers": 7, 13, 22},{"id":3, "Name": Jimmy,
-           "Age": 5, "Lucky Numbers": 1}]
+        self._members = [
+            {"id":1, "Name": "Jane", "Age":35, "Lucky Numbers": [10, 14, 3]},
+            {"id":2, "Name": "John", "Age": 33, "Lucky Numbers": [7, 13, 22]},
+            {"id":3, "Name": "Jimmy", "Age": 5, "Lucky Numbers": [1]}
+           ]
 
             
 
