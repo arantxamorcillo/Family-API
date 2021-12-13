@@ -30,25 +30,19 @@ def handle_hello():
 
     # this is how you can use the Family datastructure by calling its methods
     members = jackson_family.get_all_members()
-    response_body = {
-        "family": members
-    }
 
-
-    return jsonify(response_body), 200
+    return jsonify(members), 200
 
 @app.route('/member/<int:member_id>', methods=['GET'])
-def get_member_by_id():
-
+def get_member(member_id):
     # this is how you can use the Family datastructure by calling its methods
-    member= jackson_family.get_member(member_id)
-
+    member = jackson_family.get_member(member_id)
 
     return jsonify(member), 200
 
 @app.route('/member', methods=['POST'])
 def add_member():
-    name= request.json.get("name", None),
+    name= request.json.get("first_name", None)
     age= request.json.get("age", None)
     lucky_numbers= request.json.get("lucky_numbers", None)
     id=request.json.get("id",None)
@@ -57,21 +51,19 @@ def add_member():
        id : jackson_family._generateId()
 
     # this is how you can use the Family datastructure by calling its methods
-    member= {"id":id, "Name":name, "Age": age, "Lucky Numbers": lucky_numbers}
+    member= {"id":id, "first_name":name, "age": age, "lucky_numbers": lucky_numbers}
+    jackson_family.add_member(member)
 
 
-    return jsonify(member), 200
+    return jsonify(), 200
 
 @app.route('/member/<int:member_id>', methods=['DELETE'])
-def delete_member():
-    jackson_family.delete_member(member_id)
+def delete_member(member_id):
 
-    members = jackson_family.get_all_members()
-    response_body = {
-        "family": members
-    }
+    jackson_family.delete_member(member_id)
     
-    return jsonify(response_body), 200
+    return jsonify({"done":True}), 200
+
 
 
 # this only runs if `$ python src/app.py` is executed

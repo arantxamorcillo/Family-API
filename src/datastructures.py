@@ -14,9 +14,8 @@ class FamilyStructure:
 
         # example list of members
         self._members = [
-            {"id":1, "Name": "Jane", "Age":35, "Lucky Numbers": [10, 14, 3]},
-            {"id":2, "Name": "John", "Age": 33, "Lucky Numbers": [7, 13, 22]},
-            {"id":3, "Name": "Jimmy", "Age": 5, "Lucky Numbers": [1]}
+            {"id":1, "first_name": "John", "Age": 33, "lucky_numbers": [7, 13, 22]},{"id":2, "first_name": "Jane", "Age":35, "lucky_numbers": [10, 14, 3]},
+            {"id":3, "first_name": "Jimmy", "Age": 5, "lucky_numbers": [1]}
            ]
 
             
@@ -31,15 +30,26 @@ class FamilyStructure:
         self._members.append(member)
 
     def delete_member(self, id):
-       for member in self._members:
-           if id == member.id:
-               self._members.remove(member)
+        for member in self._members:
+            if member['id'] == id:
+                break
+        
+        self._members.remove(member)
+    
+    def update_member(self, id, member):
+        for index, member in enumerate(self._members):
+            if(member['id'] == id):
+                self._members[index] = member
+                break
 
 
     def get_member(self, id):
         for member in self._members:
-           if id == member.id:
-               return member
+           if member["id"] == id:
+            break
+        return member
+
+  
 
     # this method is done, it returns a list with all the family members
     def get_all_members(self):
